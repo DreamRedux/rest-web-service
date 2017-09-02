@@ -13,7 +13,15 @@ public class GreetingController {
 
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
-        return new Greeting(counter.incrementAndGet(),
+       /** grab jdbc connection
+        * confirm it's not null
+        * if not null, print "true"
+        */
+    	/**
+    	 * select query in code
+    	 * return statement
+    	 */
+    	return new Greeting(counter.incrementAndGet(),
                             String.format(template, name));
     }
 }
