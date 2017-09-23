@@ -27,7 +27,12 @@ public class GreetingController {
         	   String password = dbUri.getUserInfo().split(":")[1];
         	   String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 			Connection testConnection = DriverManager.getConnection(dbUrl, username, password);
-			retVal = new Greeting(counter.incrementAndGet(), "Successful Connection");
+			if(testConnection != null) {
+				retVal = new Greeting(counter.incrementAndGet(), "Successful Connection");
+			}
+			else{
+				retVal = new Greeting(counter.incrementAndGet(), "Unsuccessful Connection");
+			}
     	   } catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
