@@ -29,6 +29,7 @@ public class GreetingController {
 			Connection testConnection = DriverManager.getConnection(dbUrl, username, password);
 			if(testConnection != null) {
 				retVal = new Greeting(counter.incrementAndGet(), "Successful Connection");
+				retVal = new Greeting(counter.incrementAndGet(), dbUrl);
 			}
 			else{
 				retVal = new Greeting(counter.incrementAndGet(), "Unsuccessful Connection");
